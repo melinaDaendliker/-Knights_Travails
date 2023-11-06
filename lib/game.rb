@@ -10,7 +10,4 @@ class Game
     end
     board
   end 
-
-
-
 end 
