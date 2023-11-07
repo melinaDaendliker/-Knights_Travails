@@ -52,27 +52,14 @@ class Knight
   end 
 
   def find_shortes_path(start=@start, goal=@goal, knight_moves)
-
     queue = [[start]]
-
     while !queue.empty?
       path = queue.shift
       current_position = path.last
-      p current_position
-      p 'curr pos'
-      p path
-      p 'path'
-      p queue
-      p 'queue'
       return path if current_position == goal
-
       for i in knight_moves[current_position] do
         if !path.include?(i)
           new_path = path + [i]
-          p i 
-          p 'i'
-          p new_path
-          p 'new path'
           queue << new_path
         end
       end 
