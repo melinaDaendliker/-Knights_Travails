@@ -44,6 +44,7 @@ def make_dict(start=@start, goal=@goal, knight_moves = {})
     break if current == goal
 
     for i in knight_moves[current] do
+      next if knight_moves[i]
       knight_moves[i] = allowed_moves(i)
       queue.push(i)
     end
