@@ -1,9 +1,16 @@
 require_relative 'lib/game.rb'
 require_relative 'lib/knight.rb'
 
-knight = Knight.new([4,5], [3,7])
-p knight
-knight.make_dict
+knight = Knight.new([4,5], [7,2])
+test = knight.make_dict
+p test
+p test[[7,2]]
+
+
+
+
+
+
 
 
 

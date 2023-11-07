@@ -31,13 +31,28 @@ class Knight
 
   end 
 
-def make_dict(start=@start, goal=@goal)
-  p start
-  bla =  allowed_moves(start)
-  p bla
+def make_dict(start=@start, goal=@goal, knight_moves = {})
+  
+  return knight_moves if start == goal
+
+  queue = [start]
+  knight_moves[start] = allowed_moves(start)
+
+  while !queue.empty?
+    current = queue.shift
+
+    break if current == goal
+
+    for i in knight_moves[current] do
+      knight_moves[i] = allowed_moves(i)
+      queue.push(i)
+    end
+  end 
+  knight_moves
+
+  
   # pack all moves into a graph while simulanious exploring it
   # and stop when the goal point is reached
-  bla
 
 end 
 
