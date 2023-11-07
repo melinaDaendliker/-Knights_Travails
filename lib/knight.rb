@@ -31,31 +31,53 @@ class Knight
 
   end 
 
-def make_dict(start=@start, goal=@goal, knight_moves = {})
+  def make_dict(start=@start, goal=@goal, knight_moves = {})
   
-  return knight_moves if start == goal
+    return knight_moves if start == goal
 
-  queue = [start]
-  knight_moves[start] = allowed_moves(start)
+    queue = [start]
+    knight_moves[start] = allowed_moves(start)
 
-  while !queue.empty?
-    current = queue.shift
+    while !queue.empty?
+      current = queue.shift
+      break if current == goal
 
-    break if current == goal
-
-    for i in knight_moves[current] do
-      next if knight_moves[i]
-      knight_moves[i] = allowed_moves(i)
-      queue.push(i)
-    end
+      for i in knight_moves[current] do
+        next if knight_moves[i]
+        knight_moves[i] = allowed_moves(i)
+        queue.push(i)
+      end
+    end 
+    knight_moves
   end 
-  knight_moves
 
-  
-  # pack all moves into a graph while simulanious exploring it
-  # and stop when the goal point is reached
+  def find_shortes_path(start=@start, goal=@goal, knight_moves)
 
-end 
+    queue = [[start]]
+
+    while !queue.empty?
+      path = queue.shift
+      current_position = path.last
+      p current_position
+      p 'curr pos'
+      p path
+      p 'path'
+      p queue
+      p 'queue'
+      return path if current_position == goal
+
+      for i in knight_moves[current_position] do
+        if !path.include?(i)
+          new_path = path + [i]
+          p i 
+          p 'i'
+          p new_path
+          p 'new path'
+          queue << new_path
+        end
+      end 
+    end 
+  end 
 
 
 end 
