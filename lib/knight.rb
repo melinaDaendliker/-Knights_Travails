@@ -66,5 +66,14 @@ class Knight
     end 
   end 
 
-
+  def pretty_print(start=@start, goal=@goal)
+    movement_dict = make_dict(start, goal)
+    shortest_path = find_shortes_path(start, goal, movement_dict)
+    path_length = shortest_path.length 
+    shortest_path[0]
+    puts "You made it in #{path_length -1} moves! Here is your path:"
+    for i in shortest_path
+      p i 
+    end 
+  end 
 end 
